@@ -37,3 +37,13 @@
 .signature{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:36px;font:500 11px var(--sans);letter-spacing:.34em;color:#e6d4a8}
 .signature strong{font:500 clamp(26px,5vw,42px) var(--serif);font-style:normal;letter-spacing:.12em;color:#f0d69c;text-shadow:0 0 24px #d6aa6980}
 @media(max-width:700px){.scroll-video{object-position:center center}.hero .scroll-video{object-position:52% center}.doorway .scroll-video{object-position:51% center}.cake-scene .scroll-video{object-position:52% center}}
+
+/* Image-sequence scenes update on scroll without MP4 seeking. */
+.scroll-sequence{display:block;opacity:.86;pointer-events:none}
+.hero .scroll-sequence{z-index:1}
+.doorway .scroll-sequence{opacity:.78}
+.sound-bottom{position:fixed!important;z-index:30!important;left:50%!important;right:auto!important;top:auto!important;bottom:max(16px,env(safe-area-inset-bottom))!important;transform:translateX(-50%)!important;display:flex;align-items:center;gap:7px;padding:12px 18px!important;border:1px solid #ffffff66!important;border-radius:999px!important;background:#07101ddd!important;color:#fff!important;white-space:nowrap;box-shadow:0 8px 28px #0006;backdrop-filter:blur(12px);font:600 9px var(--sans)!important;letter-spacing:.15em;cursor:pointer}
+.sound-bottom .music-icon{color:var(--gold);font-size:16px;margin:0}
+.sound-bottom #music-label{color:#fff;margin:0}
+@media(max-width:700px){.sound-bottom{bottom:max(14px,env(safe-area-inset-bottom))!important;padding:12px 20px!important}.chapters{right:9px}}
+.scene-note{bottom:82px}
