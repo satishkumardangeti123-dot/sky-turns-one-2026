@@ -2,6 +2,28 @@ const scenes=[...document.querySelectorAll('.scene')];
 const chapterLinks=[...document.querySelectorAll('.chapters a')];
 const progress=document.querySelector('.progress i');
 const scrubVideos=[...document.querySelectorAll('[data-scroll-video]')];
+const seekState=new WeakMap();
+function requestSeek(video,time){
+  let state=seekState.get(video);
+  if(!state){
+    state={busy:false,target:null};
+    seekState.set(video,state);
+    video.addEventListener('seeked',()=>{
+      state.busy=false;
+      if(state.target!==null){
+        const next=state.target;
+        state.target=null;
+        if(Math.abs(video.currentTime-next)>.035)requestSeek(video,next);
+      }
+    });
+  }
+  state.target=time;
+  if(state.busy||video.readyState<2)return;
+  if(Math.abs(video.currentTime-time)<.035){state.target=null;return;}
+  state.busy=true;
+  try{video.currentTime=time;}catch{state.busy=false;}
+}
+
 
 const observer=new IntersectionObserver(entries=>{
   for(const entry of entries){
@@ -16,6 +38,8 @@ const observer=new IntersectionObserver(entries=>{
 scenes.forEach(scene=>observer.observe(scene));
 
 function updateProgress(){
+  
+  
   const max=document.documentElement.scrollHeight-innerHeight;
   progress.style.width=`${max>0?scrollY/max*100:0}%`;
   const flight=Math.min(1,Math.max(0,scrollY/innerHeight));
@@ -27,11 +51,10 @@ function updateProgress(){
     const rect=video.closest('.scene').getBoundingClientRect();
     const amount=Math.max(0,Math.min(1,-rect.top/rect.height));
     const time=amount*Math.max(0,video.duration-.04);
-    if(Math.abs(video.currentTime-time)>.045)video.currentTime=time;
+    requestSeek(video,time);
   }
 }
-addEventListener('scroll',updateProgress,{passive:true});updateProgress();
-scrubVideos.forEach(video=>video.addEventListener('loadedmetadata',updateProgress,{once:true}));
+addEventListener('scroll',updateProgress,{passive:true});updateProgress();scrubVideos.forEach(video=>{video.addEventListener('loadedmetadata',updateProgress,{once:true});video.addEventListener('loadeddata',updateProgress,{once:true});});
 addEventListener('resize',updateProgress,{passive:true});
 
 const target=new Date('2026-10-10T18:00:00+01:00').getTime();
