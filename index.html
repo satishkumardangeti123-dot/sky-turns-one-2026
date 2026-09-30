@@ -9,7 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"><style>
+.bag-scene{isolation:isolate;background:#76533a}.bag-direct-photo{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 37%;transform:scale(1.04);will-change:transform}.bag-scene:after{background:linear-gradient(90deg,#3e291dd9 0%,#513722a8 34%,#6c4a2024 76%),linear-gradient(0deg,#3c281d99,transparent 52%)}.bag-copy{z-index:2;text-align:left;margin-left:4vw;max-width:510px}.bag-copy .bag,.bag-copy .photo-hint{display:none}.bag-copy .eyebrow{color:#f0d8b2}.bag-copy h2 em{color:#f0d2a7}.bag-copy:after{content:"WITH LOVE  JOMI & STEFFY";display:block;margin-top:30px;font:500 22px var(--serif);letter-spacing:.12em;color:#ffe4bf}.bag-scene .scene-note{z-index:3;color:#fff0d6}.bag-scene .reveal{color:#fff4e6}@media(max-width:700px){.bag-direct-photo{object-position:center 32%}.bag-scene:after{background:linear-gradient(0deg,#3e291de8 0%,#51372291 48%,#6c4a2024 100%)}.bag-copy{align-self:flex-end;margin:0 auto 4vh;text-align:center}}
+</style>
+
 </head>
 <body>
   <div class="progress"><i></i></div>
@@ -32,7 +35,7 @@
       <div class="scene-note">OUR ADVENTURE STARTS HERE</div>
     </section>
     <section class="scene party-scene" id="party" data-scene="3">
-      <div class="party-lights"></div><div class="scene-copy centered reveal"><p class="eyebrow">A FOREST FULL OF FRIENDS</p><h2>Let’s make a<br><em>little party.</em></h2><p>Follow the glowing lights to the music, the giggles and all our favourite people.</p><div class="party-icons"><span>✧</span><span>♫</span><span>✦</span><span>♫</span><span>✧</span></div><p class="detail-pill">A magical afternoon with our favourite people</p></div>
+      <div class="party-lights"></div><div class="scene-copy centered reveal"><p class="eyebrow">A FOREST FULL OF FRIENDS</p><h2>Let’s make a<br><em>little party.</em></h2><p>Follow the glowing lights to the music, the giggles and all our favourite people.</p><div class="party-icons"><span>✧</span><span>♫</span><span>✦</span><span>♫</span><span>✧</span></div><p class="detail-pill">A magical evening with our favourite people</p></div>
       <div class="scene-note">GOOD THINGS GROW TOGETHER</div>
     </section>
     <section class="scene cake-scene" id="cake" data-scene="4">
@@ -41,7 +44,7 @@
       <div class="scene-note">THE SWEETEST LITTLE STAR</div>
     </section>
     <section class="scene bag-scene" id="photo" data-scene="5">
-      <div class="bag-glow"></div><div class="scene-copy bag-copy reveal"><p class="eyebrow">A LITTLE SURPRISE FOR YOU</p><h2>Open the<br><em>birthday bag.</em></h2><p>There’s someone very special waiting inside.</p><div class="bag" aria-label="A birthday bag opening to reveal Sky’s photo"><div class="bag-photo"><img src="assets/sky-photo.png" alt="SKY smiling with a teddy bear at a birthday celebration"></div><div class="bag-body"><span class="bag-star">✦</span><span class="bag-handle"></span></div><div class="bag-flap"><span>✦</span></div></div><p class="photo-hint">Our little birthday star, SKY ✦</p></div>
+      <img class="bag-direct-photo" src="assets/sky-photo.png" alt="SKY smiling with a teddy bear at a birthday celebration"><div class="scene-copy bag-copy reveal"><p class="eyebrow">A LITTLE SURPRISE FOR YOU</p><h2>You are<br><em>welcome.</em></h2><p>Come celebrate this special evening with us.</p><div class="bag" aria-label="A birthday bag opening to reveal Sky’s photo"><div class="bag-photo"><img src="assets/sky-photo.png" alt="SKY smiling with a teddy bear at a birthday celebration"></div><div class="bag-body"><span class="bag-star">✦</span><span class="bag-handle"></span></div><div class="bag-flap"><span>✦</span></div></div><p class="photo-hint">Our little birthday star, SKY ✦</p></div>
       <div class="scene-note">THE BEST GIFT IS YOU</div>
     </section>
     <section class="scene venue" id="venue" data-scene="6">
@@ -54,6 +57,9 @@
     </section>
   </main>
   <nav class="chapters" aria-label="Invitation chapters"><a href="#home" aria-label="Beginning"></a><a href="#date" aria-label="Date"></a><a href="#party" aria-label="Party"></a><a href="#photo" aria-label="Birthday photo"></a><a href="#venue" aria-label="Venue"></a></nav>
-  <script src="script.js"></script>
+  <script src="script.js"></script><script>
+const birthdayPhoto=document.querySelector(".bag-direct-photo");function zoomBirthdayPhoto(){if(!birthdayPhoto)return;const rect=birthdayPhoto.closest(".scene").getBoundingClientRect();const amount=Math.max(0,Math.min(1,-rect.top/rect.height));birthdayPhoto.style.transform=`scale(${1.04+amount*.16})`}addEventListener("scroll",zoomBirthdayPhoto,{passive:true});addEventListener("resize",zoomBirthdayPhoto,{passive:true});zoomBirthdayPhoto();
+</script>
+
 </body>
 </html>
