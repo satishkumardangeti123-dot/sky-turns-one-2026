@@ -12,9 +12,9 @@ const sequences=sequenceCanvases.map(canvas=>({
   frame:0,
   lastDrawn:-1,
   images:new Map(),
-  frameCount:120,
-  framesPerSheet:40,
-  columns:8,
+  frameCount:Number(canvas.dataset.frameCount)||120,
+  framesPerSheet:Number(canvas.dataset.framesPerSheet)||40,
+  columns:Number(canvas.dataset.columns)||8,
   tileWidth:Number(canvas.dataset.frameWidth)||480,
   tileHeight:Number(canvas.dataset.frameHeight)||270
 }));
@@ -92,7 +92,8 @@ function updateProgress(){
         const sheetIndex=Math.floor(sequence.frame/sequence.framesPerSheet);
         const localFrame=sequence.frame-sheetIndex*sequence.framesPerSheet;
         getSheet(sequence,sheetIndex);
-        if(sheetIndex<2&&localFrame>=24)getSheet(sequence,sheetIndex+1);
+        const lastSheet=Math.ceil(sequence.frameCount/sequence.framesPerSheet)-1;
+        if(sheetIndex<lastSheet&&localFrame>=Math.floor(sequence.framesPerSheet*.6))getSheet(sequence,sheetIndex+1);
         for(const [cachedIndex,image] of sequence.images){
           if(cachedIndex<sheetIndex||cachedIndex>sheetIndex+1){image.src='';sequence.images.delete(cachedIndex);}
         }

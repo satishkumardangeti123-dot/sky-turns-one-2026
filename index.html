@@ -48,6 +48,7 @@
       <div class="scene-note">OUR ADVENTURE STARTS HERE</div>
     </section>
     <section class="scene party-scene" id="party" data-scene="3">
+      <canvas class="scroll-video scroll-sequence" data-scroll-sequence data-sequence="assets/party" data-frame-width="450" data-frame-height="800" data-frame-count="120" data-frames-per-sheet="20" data-columns="5" aria-label="Teddy waving as the party begins"></canvas>
       <div class="party-lights"></div><div class="scene-copy centered reveal"><p class="eyebrow">A FOREST FULL OF FRIENDS</p><h2>Let’s make a<br><em>little party.</em></h2><p>Follow the glowing lights to the music, the giggles and all our favourite people.</p><div class="party-icons"><span>✧</span><span>♫</span><span>✦</span><span>♫</span><span>✧</span></div><p class="detail-pill">A magical evening with our favourite people</p></div>
       <div class="scene-note">GOOD THINGS GROW TOGETHER</div>
     </section>
@@ -61,6 +62,7 @@
       <div class="scene-note">THE BEST GIFT IS YOU</div>
     </section>
     <section class="scene venue" id="venue" data-scene="6">
+      <canvas class="scroll-video scroll-sequence" data-scroll-sequence data-sequence="assets/drive" data-frame-width="450" data-frame-height="800" data-frame-count="120" data-frames-per-sheet="20" data-columns="5" aria-label="Teddy driving to the birthday address"></canvas>
       <div class="map-lines"></div><div class="scene-copy centered reveal"><p class="eyebrow">FOLLOW THE STARS</p><h2>Find us<br><em>in Luton.</em></h2><div class="address-card"><span class="pin">✦</span><p><strong>52 Castle St.</strong><br>Chapel Langley<br>Luton, LU1 3AG<br>United Kingdom</p><a target="_blank" rel="noopener" href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x487648431d119815:0x6990cb33148c9e13?entry=s&amp;sa=X&amp;ved=2ahUKEwjpnbjJ34-XAxV6RZ8JHcIdHlcQ4kB6BAgVEAA&amp;hl=en">Open directions <span>↗</span></a></div><div class="host-line"><span>WITH LOVE</span><strong>JOMI &amp; STEFFY</strong></div></div>
       <div class="scene-note">WE’LL KEEP A LIGHT ON FOR YOU</div>
     </section>
@@ -70,7 +72,7 @@
     </section>
   </main>
   <nav class="chapters" aria-label="Invitation chapters"><a href="#home" aria-label="Beginning"></a><a href="#date" aria-label="Date"></a><a href="#party" aria-label="Party"></a><a href="#photo" aria-label="Birthday photo"></a><a href="#venue" aria-label="Venue"></a></nav>
-  <script src="script.js?v=frames3"></script><script>
+  <script src="script.js?v=frames4"></script><script>
 const birthdayPhoto=document.querySelector(".bag-direct-photo");function zoomBirthdayPhoto(){if(!birthdayPhoto)return;const rect=birthdayPhoto.closest(".scene").getBoundingClientRect();const amount=Math.max(0,Math.min(1,-rect.top/rect.height));birthdayPhoto.style.transform=`scale(${1.04+amount*.16})`}addEventListener("scroll",zoomBirthdayPhoto,{passive:true});addEventListener("resize",zoomBirthdayPhoto,{passive:true});zoomBirthdayPhoto();
 </script>
 

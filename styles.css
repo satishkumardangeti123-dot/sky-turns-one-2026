@@ -50,3 +50,26 @@
 
 /* Keep the whole original video frame in view; use only a softened fill to reach the screen edges. */
 .scroll-sequence{opacity:1}
+
+/* Scroll-scrub the party and arrival clips as light mobile-friendly image atlases. */
+.party-scene .scroll-sequence,.venue .scroll-sequence{opacity:.94}
+.party-scene .party-lights{z-index:1;opacity:.36;mix-blend-mode:screen}
+.venue .map-lines{z-index:1;opacity:.2}
+.party-scene .scene-copy.centered{margin:0 0 0 4vw;text-align:left;max-width:390px}
+.party-scene .scene-copy.centered>p:not(.eyebrow){margin-left:0;margin-right:0}
+.party-scene .party-icons{justify-content:flex-start}
+.venue .scene-copy.centered{margin:0 auto 0 4vw;text-align:left;max-width:420px}
+.venue .scene-copy.centered>p:not(.eyebrow){margin-left:0;margin-right:0}
+.venue .address-card{margin-left:0;margin-right:0;background:#07101dcc}
+.venue .host-line{align-items:flex-start;margin-left:0;margin-right:0}
+@media(max-width:700px){
+  .party-scene .scene-copy.centered{align-self:flex-end;width:100%;max-width:520px;margin:auto auto 7vh;padding:38px 12px 12px;text-align:center;background:linear-gradient(180deg,transparent 0%,#07101de0 28%,#07101df2 100%)}
+  .party-scene .scene-copy.centered>p:not(.eyebrow){margin-left:auto;margin-right:auto}
+  .party-scene .party-icons{justify-content:center;margin:18px 0}
+  .party-scene .detail-pill{padding:12px 8px!important}
+  .venue .scene-copy.centered{align-self:center;width:100%;max-width:500px;margin:auto;padding:8px 4px 0;text-align:center}
+  .venue .scene-copy.centered>p:not(.eyebrow){margin-left:auto;margin-right:auto}
+  .venue .address-card{margin:20px auto 13px;background:#07101de0}
+  .venue .host-line{align-items:center;margin:16px auto 0}
+  .party-scene .scroll-sequence,.venue .scroll-sequence{opacity:.9}
+}
