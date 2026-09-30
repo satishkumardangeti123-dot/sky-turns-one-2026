@@ -32,13 +32,13 @@
   <audio id="birthday-music" src="assets/sky-birthday-music.mp3" autoplay loop preload="auto"></audio>
   <main>
     <section class="scene hero" id="home" data-scene="0">
-      <div class="hero-art"></div><video class="scroll-video" data-scroll-video muted playsinline preload="auto" poster="assets/sky-enchanted-forest.png"><source src="assets/sky-flight.mp4" type="video/mp4"></video><div class="shade"></div>
+      <div class="hero-art"></div><video class="scroll-video" data-scroll-video muted playsinline preload="auto" poster="assets/sky-enchanted-forest.png"><source src="assets/sky-flight.mp4?v=smooth1" type="video/mp4"></video><div class="shade"></div>
       <div class="fireworks" aria-hidden="true"><b></b><b></b><b></b></div>
       <div class="hero-copy reveal"><p class="eyebrow">A LITTLE MAGIC IS ON ITS WAY</p><h1>YOU ARE<br><em>INVITED</em></h1><div class="fine-line"></div><p class="turning">SKY IS TURNING <strong>ONE</strong></p><p class="scroll-hint"><span class="mouse"></span> Scroll or swipe to begin</p></div>
       <div class="hero-caption">A day as wonderful as you are</div>
     </section>
     <section class="scene doorway" id="door" data-scene="1">
-      <video class="scroll-video" data-scroll-video muted playsinline preload="auto" poster="assets/sky-enchanted-forest.png"><source src="assets/sky-door.mp4" type="video/mp4"></video><div class="door-glow"></div>
+      <video class="scroll-video" data-scroll-video muted playsinline preload="auto" poster="assets/sky-enchanted-forest.png"><source src="assets/sky-door.mp4?v=smooth1" type="video/mp4"></video><div class="door-glow"></div>
       <div class="scene-copy reveal"><p class="eyebrow">FOLLOW THE LITTLE LIGHTS</p><h2>There’s a whole<br><em>world inside.</em></h2><p>Take my paw. Our story begins just beyond this door.</p><div class="tiny-stars">✦　✧　✦</div></div>
       <div class="scene-note">THE SECRET GARDEN</div>
     </section>
@@ -51,7 +51,7 @@
       <div class="scene-note">GOOD THINGS GROW TOGETHER</div>
     </section>
     <section class="scene cake-scene" id="cake" data-scene="4">
-      <video class="scroll-video" data-scroll-video muted playsinline preload="auto" poster="assets/sky-enchanted-forest.png"><source src="assets/sky-cake-journey.mp4" type="video/mp4"></video><div class="cake-wrap"><div class="candle"><i></i></div><div class="cake"><div class="icing"></div><div class="cake-band"></div><div class="cake-base"></div></div><div class="cake-shadow"></div></div>
+      <video class="scroll-video" data-scroll-video muted playsinline preload="auto" poster="assets/sky-enchanted-forest.png"><source src="assets/sky-cake-journey.mp4?v=smooth1" type="video/mp4"></video><div class="cake-wrap"><div class="candle"><i></i></div><div class="cake"><div class="icing"></div><div class="cake-band"></div><div class="cake-base"></div></div><div class="cake-shadow"></div></div>
       <div class="scene-copy cake-copy reveal"><p class="eyebrow">MAKE A WISH, SKY</p><h2>One candle.<br><em>A million wishes.</em></h2><p>May your first year be the beginning of a lifetime filled with wonder.</p><div class="cake-sparkle">✦　✧　✦</div></div>
       <div class="scene-note">THE SWEETEST LITTLE STAR</div>
     </section>
@@ -69,7 +69,7 @@
     </section>
   </main>
   <nav class="chapters" aria-label="Invitation chapters"><a href="#home" aria-label="Beginning"></a><a href="#date" aria-label="Date"></a><a href="#party" aria-label="Party"></a><a href="#photo" aria-label="Birthday photo"></a><a href="#venue" aria-label="Venue"></a></nav>
-  <script src="script.js"></script><script>
+  <script src="script.js?v=smooth1"></script><script>
 const birthdayPhoto=document.querySelector(".bag-direct-photo");function zoomBirthdayPhoto(){if(!birthdayPhoto)return;const rect=birthdayPhoto.closest(".scene").getBoundingClientRect();const amount=Math.max(0,Math.min(1,-rect.top/rect.height));birthdayPhoto.style.transform=`scale(${1.04+amount*.16})`}addEventListener("scroll",zoomBirthdayPhoto,{passive:true});addEventListener("resize",zoomBirthdayPhoto,{passive:true});zoomBirthdayPhoto();
 </script>
 
