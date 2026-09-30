@@ -33,13 +33,13 @@
   <button class="sound sound-bottom" id="music-toggle" type="button" aria-label="Play birthday music"><span class="music-icon">♫</span> <span id="music-label">PLAY MUSIC</span></button>
   <main>
     <section class="scene hero" id="home" data-scene="0">
-      <div class="hero-art"></div><canvas class="scroll-video scroll-sequence" data-scroll-sequence data-sequence="assets/flight" aria-label="Teddy flying with balloons"></canvas><div class="shade"></div>
+      <div class="hero-art"></div><canvas class="scroll-video scroll-sequence" data-scroll-sequence data-sequence="assets/flight" data-frame-width="640" data-frame-height="360" aria-label="Teddy flying with balloons"></canvas><div class="shade"></div>
       <div class="fireworks" aria-hidden="true"><b></b><b></b><b></b></div>
       <div class="hero-copy reveal"><p class="eyebrow">A LITTLE MAGIC IS ON ITS WAY</p><h1>YOU ARE<br><em>INVITED</em></h1><div class="fine-line"></div><p class="turning">SKY IS TURNING <strong>ONE</strong></p><p class="scroll-hint"><span class="mouse"></span> Scroll or swipe to begin</p></div>
       <div class="hero-caption">A day as wonderful as you are</div>
     </section>
     <section class="scene doorway" id="door" data-scene="1">
-      <canvas class="scroll-video scroll-sequence" data-scroll-sequence data-sequence="assets/door" aria-label="Teddy walking through the fantasy doorway"></canvas><div class="door-glow"></div>
+      <canvas class="scroll-video scroll-sequence" data-scroll-sequence data-sequence="assets/door" data-frame-width="450" data-frame-height="800" aria-label="Teddy walking through the fantasy doorway"></canvas><div class="door-glow"></div>
       <div class="scene-copy reveal"><p class="eyebrow">FOLLOW THE LITTLE LIGHTS</p><h2>There’s a whole<br><em>world inside.</em></h2><p>Take my paw. Our story begins just beyond this door.</p><div class="tiny-stars">✦　✧　✦</div></div>
       <div class="scene-note">THE SECRET GARDEN</div>
     </section>
@@ -70,7 +70,7 @@
     </section>
   </main>
   <nav class="chapters" aria-label="Invitation chapters"><a href="#home" aria-label="Beginning"></a><a href="#date" aria-label="Date"></a><a href="#party" aria-label="Party"></a><a href="#photo" aria-label="Birthday photo"></a><a href="#venue" aria-label="Venue"></a></nav>
-  <script src="script.js?v=frames2"></script><script>
+  <script src="script.js?v=frames3"></script><script>
 const birthdayPhoto=document.querySelector(".bag-direct-photo");function zoomBirthdayPhoto(){if(!birthdayPhoto)return;const rect=birthdayPhoto.closest(".scene").getBoundingClientRect();const amount=Math.max(0,Math.min(1,-rect.top/rect.height));birthdayPhoto.style.transform=`scale(${1.04+amount*.16})`}addEventListener("scroll",zoomBirthdayPhoto,{passive:true});addEventListener("resize",zoomBirthdayPhoto,{passive:true});zoomBirthdayPhoto();
 </script>
 

@@ -47,3 +47,6 @@
 .sound-bottom #music-label{color:#fff;margin:0}
 @media(max-width:700px){.sound-bottom{bottom:max(14px,env(safe-area-inset-bottom))!important;padding:12px 20px!important}.chapters{right:9px}}
 .scene-note{bottom:82px}
+
+/* Keep the whole original video frame in view; use only a softened fill to reach the screen edges. */
+.scroll-sequence{opacity:1}

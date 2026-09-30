@@ -15,8 +15,8 @@ const sequences=sequenceCanvases.map(canvas=>({
   frameCount:120,
   framesPerSheet:40,
   columns:8,
-  tileWidth:480,
-  tileHeight:270
+  tileWidth:Number(canvas.dataset.frameWidth)||480,
+  tileHeight:Number(canvas.dataset.frameHeight)||270
 }));
 
 function getSheet(sequence,index){
@@ -26,7 +26,7 @@ function getSheet(sequence,index){
   sequence.images.set(index,image);
   image.onload=()=>{sequence.lastDrawn=-1;drawSequence(sequence)};
   image.onerror=()=>sequence.images.delete(index);
-  image.src=`${sequence.base}-${String(index+1).padStart(2,'0')}.jpg`;
+  image.src=`${sequence.base}-${String(index+1).padStart(2,'0')}.jpg?v=clarity3`;
   return image;
 }
 
@@ -46,9 +46,17 @@ function drawSequence(sequence){
   const localFrame=frame-sheetIndex*sequence.framesPerSheet;
   const sx=(localFrame%sequence.columns)*sequence.tileWidth;
   const sy=Math.floor(localFrame/sequence.columns)*sequence.tileHeight;
-  const scale=Math.max(width/sequence.tileWidth,height/sequence.tileHeight);
+  const coverScale=Math.max(width/sequence.tileWidth,height/sequence.tileHeight)*1.12;
+  const coverWidth=sequence.tileWidth*coverScale,coverHeight=sequence.tileHeight*coverScale;
+  sequence.ctx.save();
+  if('filter' in sequence.ctx)sequence.ctx.filter='blur(22px) brightness(.56) saturate(1.12)';
+  sequence.ctx.drawImage(image,sx,sy,sequence.tileWidth,sequence.tileHeight,(width-coverWidth)/2,(height-coverHeight)/2,coverWidth,coverHeight);
+  sequence.ctx.restore();
+  const scale=Math.min(width/sequence.tileWidth,height/sequence.tileHeight);
   const drawWidth=sequence.tileWidth*scale,drawHeight=sequence.tileHeight*scale;
-  sequence.ctx.drawImage(image,sx,sy,sequence.tileWidth,sequence.tileHeight,(width-drawWidth)/2,(height-drawHeight)/2,drawWidth,drawHeight);
+  const isPortrait=sequence.tileHeight>sequence.tileWidth;
+  const x=isPortrait&&width/height>sequence.tileWidth/sequence.tileHeight?width-drawWidth-width*.08:(width-drawWidth)/2;
+  sequence.ctx.drawImage(image,sx,sy,sequence.tileWidth,sequence.tileHeight,x,(height-drawHeight)/2,drawWidth,drawHeight);
   sequence.lastDrawn=frame;
 }
 
@@ -82,8 +90,12 @@ function updateProgress(){
       const nearby=rect.top<innerHeight*1.5&&rect.bottom>-innerHeight;
       if(nearby){
         const sheetIndex=Math.floor(sequence.frame/sequence.framesPerSheet);
+        const localFrame=sequence.frame-sheetIndex*sequence.framesPerSheet;
         getSheet(sequence,sheetIndex);
-        if(sheetIndex<2)getSheet(sequence,sheetIndex+1);
+        if(sheetIndex<2&&localFrame>=24)getSheet(sequence,sheetIndex+1);
+        for(const [cachedIndex,image] of sequence.images){
+          if(cachedIndex<sheetIndex||cachedIndex>sheetIndex+1){image.src='';sequence.images.delete(cachedIndex);}
+        }
         drawSequence(sequence);
       }else if(rect.top>innerHeight*1.5||rect.bottom< -innerHeight*1.5){
         for(const image of sequence.images.values())image.src='';
